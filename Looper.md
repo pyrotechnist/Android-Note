@@ -6,9 +6,12 @@ You can post messages to it via the sendMessage(Message) or via the sendEmptyMes
 
 **Use the post() method to send a Runnable to it.**
 
-# 1. Handler :override the handleMessage() method to process messages
+### 1. Handler :override the handleMessage() method to process messages
 
+```
+// test
 public class MainActivity extends Activity {
+
     private ProgressDialog progressDialog;
     private ImageView imageView;
     private String url = "http://www.9ori.com/store/media/images/8ab579a656.jpg";
@@ -81,10 +84,11 @@ public class MainActivity extends Activity {
     }
 }
 
+```
 
+### 2. Handler post : 
 
-# 2. Handler post : 
-
+```
 public class MainActivity extends Activity {
 
 	private Handler handler;
@@ -127,9 +131,10 @@ public class MainActivity extends Activity {
 	}
 
 }
+```
 
-# 3. View post: The View class allows you to post objects of type Runnable via the post() method.
-
+### 3. View post: The View class allows you to post objects of type Runnable via the post() method.
+```
 public class ProgressTestActivity extends Activity {
     private ProgressBar progress;
     private TextView text;
@@ -170,3 +175,4 @@ public class ProgressTestActivity extends Activity {
     }
 
 }
+```
