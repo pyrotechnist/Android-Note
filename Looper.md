@@ -1,4 +1,8 @@
 
+
+
+
+
 A Handler object registers itself with the thread in which it is created. It provides a channel to send data to this thread, for example the main thread. The data which can be posted via the Handler class can be an instance of the Message or the Runnable class. A Handler is particular useful if you have want to post multiple times data to the main thread.
 
 You can post messages to it via the **sendMessage(Message)** or via the **sendEmptyMessage()** method. 
@@ -9,6 +13,8 @@ There is 3 ways to use looper
 
 ### 1. Handler :override the handleMessage() method to process messages, post message via **sendMessage(Message)** or via the **sendEmptyMessage()**
 
+
+#### sendEmptyMessage()
 ```
 // test
 public class MainActivity extends Activity {
@@ -84,6 +90,41 @@ public class MainActivity extends Activity {
         return null;
     }
 }
+
+```
+
+#### sendMessage(Message)
+```
+
+public void buttonClick(View view)
+{
+    	
+    	Runnable runnable = new Runnable() {
+	        public void run() {
+            	Message msg = handler.obtainMessage();
+    			Bundle bundle = new Bundle();
+    			SimpleDateFormat dateformat = 
+                             new SimpleDateFormat("HH:mm:ss MM/dd/yyyy", Locale.US);
+    			String dateString = dateformat.format(new Date());
+    			bundle.putString("myKey", dateString);
+                 msg.setData(bundle);
+                 handler.sendMessage(msg);
+	        }
+      };
+      
+Thread mythread = new Thread(runnable);
+mythread.start();
+}
+//Next, update the handleMessage() method of the handler to extract the date and time string from the bundle object in the message and display it on the TextView object: Handler handler = new Handler() {
+@Override
+public void handleMessage(Message msg) {			  
+		Bundle bundle = msg.getData();
+		String string = bundle.getString("myKey");
+		TextView myTextView = 
+                     (TextView)findViewById(R.id.myTextView);
+		myTextView.setText(string);
+	      }
+}; 
 
 ```
 
@@ -177,3 +218,10 @@ public class ProgressTestActivity extends Activity {
 
 }
 ```
+
+
+http://blog.csdn.net/lmj623565791/article/details/38377229
+https://developer.android.com/training/multiple-threads/communicate-ui.html#Handler
+http://www.techotopia.com/index.php/A_Basic_Overview_of_Android_Threads_and_Thread_handlers
+
+
