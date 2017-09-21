@@ -1,12 +1,13 @@
+
+A Handler object registers itself with the thread in which it is created. It provides a channel to send data to this thread, for example the main thread. The data which can be posted via the Handler class can be an instance of the Message or the Runnable class. A Handler is particular useful if you have want to post multiple times data to the main thread.
+
+You can post messages to it via the **sendMessage(Message)** or via the **sendEmptyMessage()** method. 
+
+Use the post() method to send a **Runnable** to it.
+
 There is 3 ways to use looper
 
-To implement a handler subclass it and override the handleMessage() method to process messages. 
-
-You can post messages to it via the sendMessage(Message) or via the sendEmptyMessage() method. 
-
-**Use the post() method to send a Runnable to it.**
-
-### 1. Handler :override the handleMessage() method to process messages
+### 1. Handler :override the handleMessage() method to process messages, post message via **sendMessage(Message)** or via the **sendEmptyMessage()**
 
 ```
 // test
@@ -86,7 +87,7 @@ public class MainActivity extends Activity {
 
 ```
 
-### 2. Handler post : 
+### 2. Handler post : Use the post() method to send a Runnable to it.
 
 ```
 public class MainActivity extends Activity {
