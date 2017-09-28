@@ -1,0 +1,29 @@
+1. Normal case :
+
+Activity---dispatchTouchEvent---DOWN
+RTButton---dispatchTouchEvent---DOWN
+RTButton---onTouch---DOWN
+RTButton---onTouchEvent---DOWN
+Activity---dispatchTouchEvent---UP
+RTButton---dispatchTouchEvent---UP
+RTButton---onTouch---UP
+RTButton---onTouchEvent---UP
+RTButton clicked!
+
+2 dispatchTouchEvent return false : return parent view for all actions
+
+Activity---dispatchTouchEvent---DOWN
+RTButton---dispatchTouchEvent---DOWN
+Activity---onTouchEvent---DOWN
+Activity---dispatchTouchEvent---UP
+Activity---onTouchEvent---UP
+
+3 onTouchEvent return false : finish current actionm then go to parent view for same action and following action
+
+Activity---dispatchTouchEvent---DOWN
+RTButton---dispatchTouchEvent---DOWN
+RTButton---onTouch---DOWN
+RTButton---onTouchEvent---DOWN
+Activity---onTouchEvent---DOWN
+Activity---dispatchTouchEvent---UP
+Activity---onTouchEvent---UP
