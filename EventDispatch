@@ -10,7 +10,7 @@ RTButton---onTouch---UP
 RTButton---onTouchEvent---UP
 RTButton clicked!
 
-2 dispatchTouchEvent return false : return parent view for all actions
+2 dispatchTouchEvent return false : return parent view for all actions, notice there is even NO "onTouch" executed
 
 Activity---dispatchTouchEvent---DOWN
 RTButton---dispatchTouchEvent---DOWN
@@ -27,3 +27,12 @@ RTButton---onTouchEvent---DOWN
 Activity---onTouchEvent---DOWN
 Activity---dispatchTouchEvent---UP
 Activity---onTouchEvent---UP
+
+4 onTouch return true: always return true for dispatchTouchEvent and never go to onTouchEvent
+
+Activity---dispatchTouchEvent---DOWN
+RTButton---dispatchTouchEvent---DOWN
+RTButton---onTouch---DOWN
+Activity---dispatchTouchEvent---UP
+RTButton---dispatchTouchEvent---UP
+RTButton---onTouch---UP
