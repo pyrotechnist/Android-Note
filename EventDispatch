@@ -1,3 +1,6 @@
+https://github.com/pyrotechnist/EventDispatch
+
+
 1. Normal case :
 
 Activity---dispatchTouchEvent---DOWN
@@ -18,7 +21,14 @@ Activity---onTouchEvent---DOWN
 Activity---dispatchTouchEvent---UP
 Activity---onTouchEvent---UP
 
-3 onTouchEvent return false : finish current actionm then go to parent view for same action and following action
+3 dispatchTouchEvent return true : consume event, dispatch finished
+
+Activity---dispatchTouchEvent---DOWN
+RTButton---dispatchTouchEvent---DOWN
+Activity---dispatchTouchEvent---UP
+RTButton---dispatchTouchEvent---UP
+
+4 onTouchEvent return false : finish current action， then go to parent view for same action and following action
 
 Activity---dispatchTouchEvent---DOWN
 RTButton---dispatchTouchEvent---DOWN
@@ -28,7 +38,19 @@ Activity---onTouchEvent---DOWN
 Activity---dispatchTouchEvent---UP
 Activity---onTouchEvent---UP
 
-4 onTouch return true: always return true for dispatchTouchEvent and never go to onTouchEvent
+4 onTouchEvent return true : consume event without click event
+
+Activity---dispatchTouchEvent---DOWN
+RTButton---dispatchTouchEvent---DOWN
+RTButton---onTouch---DOWN
+RTButton---onTouchEvent---DOWN
+Activity---dispatchTouchEvent---UP
+RTButton---dispatchTouchEvent---UP
+RTButton---onTouch---UP
+RTButton---onTouchEvent---UP
+
+
+6 onTouch return true: always return true for dispatchTouchEvent and never go to onTouchEvent
 
 Activity---dispatchTouchEvent---DOWN
 RTButton---dispatchTouchEvent---DOWN
