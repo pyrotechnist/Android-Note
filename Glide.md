@@ -8,7 +8,8 @@
     
     
    # SimpleTarget 
-   ```
+  
+  ```
     final ImageView  imageViewPreview = (ImageView) view.findViewById(R.id.image_preview);
 
             Image image = images.get(position);
@@ -23,5 +24,5 @@
                             
                               }
                           });
-
-    ```
+  ```
+   # To be continue 
