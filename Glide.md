@@ -8,7 +8,7 @@
     
     
    # SimpleTarget 
-   ``` 
+   ```
     final ImageView  imageViewPreview = (ImageView) view.findViewById(R.id.image_preview);
 
             Image image = images.get(position);
@@ -16,12 +16,12 @@
             Glide.with(getActivity())
                     .load(image.getLarge())
                     .asBitmap()
-            .into(new SimpleTarget<Bitmap>() {
-                @Override
-                public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
-                    imageViewPreview.setImageBitmap(bitmap);
-              
-                }
-            });
-     ```
-    
+                    .into(new SimpleTarget<Bitmap>() {
+                              @Override
+                              public void onResourceReady(Bitmap bitmap, GlideAnimation anim) {
+                                  imageViewPreview.setImageBitmap(bitmap);
+                            
+                              }
+                          });
+
+    ```
