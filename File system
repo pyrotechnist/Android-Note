@@ -22,23 +22,32 @@ Alternatively, you can call openFileOutput() to get a FileOutputStream that writ
 For example, here's how to write some text to a file:
 
 
- ```
+```
 String filename = "myfile";
 String string = "Hello world!";
 FileOutputStream outputStream;
 
 try {
 
-  // solution 1 : File()
+  // solution 1 : File()  getFilesDir()
   // path to /data/data/yourapp/files
   File file = new File(context.getFilesDir(), filename);
   outputStream = new FileOutputStream(file);
   
   // solution 2 : openFileOutput();
+  // path to /data/data/yourapp/files
   outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+  
+  // solution 3 : getDir()
+  // path to /data/data/yourapp/app_imageDir
+  File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
+  File file=new File(directory,filename);
+  outputStream = new FileOutputStream(file);
+  
+  
   outputStream.write(string.getBytes());
   outputStream.close();
 } catch (Exception e) {
   e.printStackTrace();
 }
- ```
+```
