@@ -1,10 +1,10 @@
 
 
-getFilesDir() returns a File object to a directory that is private to your application only. 
+* getFilesDir() returns a File object to a directory that is private to your application only. 
              When you use openFileOutput(String, int), the data you write is directly stored in this directory 
              and is not accessible by any other application. It holds your application files.
 
-getDir() enables you to create any file or directory in the internal memory, 
+* getDir() enables you to create any file or directory in the internal memory, 
          which is also accessible by other applications depending on the mode you create it. 
          openFileOutput(String, int) will not work with the output of this 
          so you will have to use other means of writing and reading files to deal with this directory or file. 
@@ -15,8 +15,9 @@ getDir() enables you to create any file or directory in the internal memory,
 To create a new file in one of these directories, you can use the File() constructor, 
 passing the File provided by one of the above methods that specifies your internal storage directory. For example:  
   
-  
+``` 
 File file = new File(context.getFilesDir(), filename);
+```
 
 Alternatively, you can call openFileOutput() to get a FileOutputStream that writes to a file in your internal directory.
 For example, here's how to write some text to a file:
