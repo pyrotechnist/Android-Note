@@ -22,7 +22,7 @@ Alternatively, you can call openFileOutput() to get a FileOutputStream that writ
 For example, here's how to write some text to a file:
 
 
-```
+ ```
 String filename = "myfile";
 String string = "Hello world!";
 FileOutputStream outputStream;
@@ -41,4 +41,4 @@ try {
 } catch (Exception e) {
   e.printStackTrace();
 }
-```
+ ```
