@@ -133,3 +133,40 @@ public File getAlbumStorageDir(Context context, String albumName) {
 
 
 ## Load from external
+
+```
+String FILENAME = "hello_file";
+
+        String string = "hello world!";
+
+        // public path
+        // path to /storage/sdcard/Documents/files/yourpath
+        File storageDir = new File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS)
+                        + "/GalleryTest");
+
+        if (!storageDir.exists()) {
+            Toast.makeText(this, "Cannot finfd  folder" + storageDir.getAbsolutePath(), Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        File imageFile = new File(storageDir, FILENAME);
+
+        StringBuilder contentBuilder = new StringBuilder();
+
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream (imageFile.getAbsolutePath()))))
+        {
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null)
+            {
+                contentBuilder.append(sCurrentLine).append("\n");
+            }
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        mTextView.setText(contentBuilder.toString());
+```
+
