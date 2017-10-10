@@ -13,6 +13,8 @@
          
 openFileOutput is specifically used for file writing into internal storage and disallow writing to external storage. However, FileOutputStream allows you to write to both internal and external storage as well. From my experience, you can create a directory with ease using FileOutputStream in internal storage. You can also set a mode using FileOutputStream as the 2nd parameter in one of its constructor. Example of how you write to internal storage using FileOutputStream in append mode:
          
+
+# Internal storage
          
 To create a new file in one of these directories, you can use the File() constructor, 
 passing the File provided by one of the above methods that specifies your internal storage directory. For example:  
@@ -52,5 +54,42 @@ try {
   outputStream.close();
 } catch (Exception e) {
   e.printStackTrace();
+}
+```
+
+# External storage
+
+If you want to save public files on the external storage, use the getExternalStoragePublicDirectory() method to get a File representing the appropriate directory on the external storage. The method takes an argument specifying the type of file you want to save so that they can be logically organized with other public files, such as DIRECTORY_MUSIC or DIRECTORY_PICTURES. For example:
+
+```
+public File getAlbumStorageDir(String albumName) {
+    // Get the directory for the user's public pictures directory.
+    // path to /storage/sdcard/Documents/files/yourpath
+    File file = new File(Environment.getExternalStoragePublicDirectory(
+            Environment.DIRECTORY_PICTURES), albumName);
+    if (!file.mkdirs()) {
+        Log.e(LOG_TAG, "Directory not created");
+    }
+    return file;
+}
+```
+
+
+If you want to save files that are private to your app, you can acquire the appropriate directory by calling getExternalFilesDir() and passing it a name indicating the type of directory you'd like. Each directory created this way is added to a parent directory that encapsulates all your app's external storage files, which the system deletes when the user uninstalls your app.
+
+For example, here's a method you can use to create a directory for an individual photo album:
+
+```
+public File getAlbumStorageDir(Context context, String albumName) {
+    // Get the directory for the app's private pictures directory.
+    // path to /storage/sdcard/Android/data/com.longyuan.filesystemtest/files
+    //File storageDir = getExternalFilesDir(null);
+    // path to /storage/sdcard/Android/data/com.longyuan.filesystemtest/files/Documents
+    File file = new File(context.getExternalFilesDir(
+            Environment.DIRECTORY_PICTURES), albumName);
+    if (!file.mkdirs()) {
+        Log.e(LOG_TAG, "Directory not created");
+    }
+    return file;
 }
 ```
