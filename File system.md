@@ -15,7 +15,9 @@ openFileOutput is specifically used for file writing into internal storage and d
          
 
 # Internal storage
-         
+
+## Save to internal
+
 To create a new file in one of these directories, you can use the File() constructor, 
 passing the File provided by one of the above methods that specifies your internal storage directory. For example:  
   
@@ -57,7 +59,42 @@ try {
 }
 ```
 
+## Load from internal
+
+* Call openFileInput() and pass it the name of the file to read. This returns a FileInputStream.
+* Read bytes from the file with read().
+* Then close the stream with close().
+
+```
+ public void loadFromInternal(View v){
+
+        String FILENAME = "hello_file";
+
+        StringBuilder contentBuilder = new StringBuilder();
+
+        try(BufferedReader br = new BufferedReader(new InputStreamReader(openFileInput(FILENAME))))
+        {
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null)
+            {
+                contentBuilder.append(sCurrentLine).append("\n");
+            }
+
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        mTextView.setText(contentBuilder.toString());
+
+    }
+
+```
+
+
 # External storage
+
+## Save to External 
 
 If you want to save public files on the external storage, use the getExternalStoragePublicDirectory() method to get a File representing the appropriate directory on the external storage. The method takes an argument specifying the type of file you want to save so that they can be logically organized with other public files, such as DIRECTORY_MUSIC or DIRECTORY_PICTURES. For example:
 
@@ -93,3 +130,6 @@ public File getAlbumStorageDir(Context context, String albumName) {
     return file;
 }
 ```
+
+
+## Load from external
