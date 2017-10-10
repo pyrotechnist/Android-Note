@@ -11,6 +11,8 @@
          This is more used for creating custom files other than files only used by your application.
          
          
+openFileOutput is specifically used for file writing into internal storage and disallow writing to external storage. However, FileOutputStream allows you to write to both internal and external storage as well. From my experience, you can create a directory with ease using FileOutputStream in internal storage. You can also set a mode using FileOutputStream as the 2nd parameter in one of its constructor. Example of how you write to internal storage using FileOutputStream in append mode:
+         
          
 To create a new file in one of these directories, you can use the File() constructor, 
 passing the File provided by one of the above methods that specifies your internal storage directory. For example:  
