@@ -1,8 +1,17 @@
 
 ## RecyclerView inside NestedScrollView
 
-* Case 1 :  Few items on the RecyclerView, set height of RecyclerView as wrap_content, and setNestedScrollingEnabled(false)
-            Don't use this if there are many items, it will draw all recycler views at once. No view will be recycled
+* Case 1 :  Few items on the RecyclerView      
+
+1) You need to use support library 23.2.0 (or) above
+
+2) and recyclerView height will be wrap_content.
+
+3) recyclerView.setNestedScrollingEnabled(false)
+
+But by doing this the recycler pattern don't work. (i.e all the views will be loaded at once because wrap_content needs the height of complete recyclerView so it will draw all recycler views at once. No view will be recycled). Try not to use this pattern util unless it is really required. Try to use viewType and add all other views that needs to scroll to recyclerView
+
+(https://stackoverflow.com/questions/31000081/how-to-use-recyclerview-inside-nestedscrollview)
 
 Layout :
 
