@@ -59,3 +59,17 @@ Activity :
 ```
         mStoryList.setNestedScrollingEnabled(false);
 ```
+
+
+## make content to match height of scrollview
+
+```
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.longyuan.zhihuretrofitvolley.MainActivity">
+    ```
+
