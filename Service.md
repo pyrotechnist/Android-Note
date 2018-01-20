@@ -8,7 +8,7 @@ Creates a work queue that passes one intent at a time to your onHandleIntent() i
 
 Process tasks one by one.
 
-You can use Broadcast to send notification to Activity 
+> You can use Broadcast to send notification to Activity 
 
 In activity: add receiver to receive broadcast
 ```
@@ -59,7 +59,7 @@ In activity: add receiver to receive broadcast
   ```
   
   
-  Or use handler to post information to ui thread 
+ > Or use handler to post information to ui thread 
 
 ```
 @Override
