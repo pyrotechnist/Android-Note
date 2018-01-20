@@ -49,6 +49,15 @@ In activity: add receiver to receive broadcast
     }
     
   ```
+  In intentservice: send broadcast
+  
+  ```
+   Intent intent = new Intent(NOTIFICATION);
+        intent.putExtra(FILEPATH, outputPath);
+        intent.putExtra(RESULT, result);
+        sendBroadcast(intent);
+  ```
+  
   
   Or use handler to post information to ui thread 
 
